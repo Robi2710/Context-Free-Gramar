@@ -1,5 +1,5 @@
 import random
-
+import re
 #task 1 - CFG
 productions = {
     'S' : ['aSb', '']
@@ -83,6 +83,17 @@ def membership(s, current = 'S'):
         return False
     return match(current, s)
 
+# task 5
+
+def membership_abc(s: str) -> bool:
+    if not re.fullmatch(r'a+b+c+', s):
+        return False
+    return s.count('a') == s.count('b') == s.count('c')
+
+# L = {aⁿbⁿcⁿ | n ≥ 1} nu este limbaj context-free
+# deoarece necesită compararea a trei cantități egale, ceea ce nu este posibil
+# cu o gramatică de tip context-free. Recunoașterea se face aici prin simulare.
+
 if __name__ == '__main__':
     print("--Task 1--")
     print(start_symbol)
@@ -107,5 +118,11 @@ if __name__ == '__main__':
     test_cases = ['aabb', 'abab', 'aaabbb', '', 'ab']
     for case in test_cases:
         print(f"Is '{case}' in language? -> {membership(case)}")
+
+    print("\n--Task 5--")
+    tests5 = ['abc', 'aabbcc', 'aaabbbccc', 'aabccc', 'abcc', '']
+    for w in tests5:
+        print(f"Is '{w}' in {{aⁿbⁿcⁿ}}? -> {membership_abc(w)}")
+
 
 
