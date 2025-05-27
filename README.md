@@ -60,4 +60,12 @@ Is 'abab' in language? -> False
 Is 'aaabbb' in language? -> True
 Is '' in language? -> True
 Is 'ab' in language? -> True
+
+--Task 5--
+Is 'abc' in {aⁿbⁿcⁿ}? -> True
+Is 'aabbcc' in {aⁿbⁿcⁿ}? -> True
+Is 'aaabbbccc' in {aⁿbⁿcⁿ}? -> True
+Is 'aabccc' in {aⁿbⁿcⁿ}? -> False
+Is 'abcc' in {aⁿbⁿcⁿ}? -> False
+Is '' in {aⁿbⁿcⁿ}? -> False
 ```
