@@ -31,6 +31,29 @@ Checks if a string belongs to the language defined by the CFG using recursive ex
 - Function: `membership(s)`
 - Returns `True` or `False`
 
+ ### ✅ Task 5 - Membership for {aⁿbⁿcⁿ}
+
+Although the language L = { aⁿbⁿcⁿ | n ≥ 1 } is _not_ context-free, we simulate its recognition with a small set of productions and a direct check:
+
+- Productions (simulating a context-sensitive process):
+  ```text
+  S  → aSBC
+  S  → abc
+  CB → BC
+  aB → ab
+  bB → bb
+  bC → bc
+  cC → cc
+  ```
+- Function: `membership_abc(s: str) -> bool`
+  - Returns **True** if `s` has the form aⁿbⁿcⁿ, n ≥ 1.
+  - Algorithm:
+    1. Count the initial block of `a`'s → n.
+    2. Verify the next n symbols are all `b`.
+    3. Verify the next n symbols are all `c`.
+    4. Ensure the string length is exactly 3·n.
+
+
 ## ▶️ How to Run
 
 Make sure you have **Python 3.x** installed. Then, simply run the script in your terminal:
