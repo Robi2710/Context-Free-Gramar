@@ -117,13 +117,19 @@ def membership_abc(s: str) -> bool:
 
 if __name__ == '__main__':
     print("--Task 1--")
-    print(start_symbol)
-    print(productions)
+    print(f"Start symbol: {start_symbol}")
+    print("Productions:")
+    for lhs, rhss in productions.items():
+        for rhs in rhss:
+            rhs_display = 'ε' if rhs == '' else rhs
+            print(f"  {lhs} → {rhs_display}")
 
-    print("--Task 2--")
-    random.seed(42)
+    print("\n--Task 2--")
+    #random.seed(42)
     generated = gen_strings(10)
-    print(generated)
+    print("Generated strings:")
+    for idx, s in enumerate(generated, 1):
+        print(f"  {idx:2d}. {repr(s)}")
 
     print("\n--Task 3--")
     test_str = 'aabb'
