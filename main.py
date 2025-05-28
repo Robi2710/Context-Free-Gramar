@@ -1,5 +1,5 @@
 import random
-import re
+
 #task 1 - CFG
 productions = {
     'S' : ['aSb', '']
@@ -85,10 +85,31 @@ def membership(s, current = 'S'):
 
 # task 5
 
+productions_cs = [
+    ("S", "aSBC"),
+    ("S", "abc"),
+    ("CB", "BC"),
+    ("aB", "ab"),
+    ("bB", "bb"),
+    ("bC", "bc"),
+    ("cC", "cc"),
+]
 def membership_abc(s: str) -> bool:
-    if not re.fullmatch(r'a+b+c+', s):
+    if not s or s[0] != 'a':
         return False
-    return s.count('a') == s.count('b') == s.count('c')
+
+    n = 0
+    while n < len(s) and s[n] == 'a':
+        n += 1
+
+    if s[n:2*n] != 'b' * n:
+        return False
+
+    if s[2*n:3*n] != 'c' * n:
+        return False
+
+    return 3*n == len(s)
+
 
 # L = {aⁿbⁿcⁿ | n ≥ 1} nu este limbaj context-free
 # deoarece necesită compararea a trei cantități egale, ceea ce nu este posibil
@@ -123,6 +144,3 @@ if __name__ == '__main__':
     tests5 = ['abc', 'aabbcc', 'aaabbbccc', 'aabccc', 'abcc', '']
     for w in tests5:
         print(f"Is '{w}' in {{aⁿbⁿcⁿ}}? -> {membership_abc(w)}")
-
-
-
